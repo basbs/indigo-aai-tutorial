@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+#FIXME: I can't run this script. Because when i was creating the client in MitreID dashboard
+# the below options was disabled.
+# {
+#  "error": "invalid_client",
+#  "error_description": "Unauthorized grant type: urn:ietf:params:oauth:grant-type:token-exchange"
+#}
+
 IAM_CLIENT_ID=${IAM_CLIENT_ID:-iam-client}
 IAM_CLIENT_SECRET=${IAM_CLIENT_SECRET} 
 

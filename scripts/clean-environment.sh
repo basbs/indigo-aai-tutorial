@@ -1,3 +1,9 @@
+#!/bin/bash
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+  echo "This script needs to be sourced, not executed directly."
+  echo "Please use the 'source' command or '.' to run this script."
+  exit 1
+fi
 unset IAM_HOSTNAME
 unset IAM_CLIENT_ID
 unset IAM_CLIENT_SECRET
@@ -14,3 +20,11 @@ unset IAM_USERINFO_ENDPOINT
 unset IAM_SCIM_ME_ENDPOINT
 unset IAM_SCIM_USERS_ENDPOINT
 unset IAM_SCIM_GROUPS_ENDPOINT
+unset IAM_ACCESS_TOKEN
+unset IAM_REFRESH_TOKEN
+unset IAM_CLIENT_RESPONSE_JSON
+unset IAM_LIST_CLIENTS
+unset IAM_SCOPES_ENDPOINT
+unset IAM_SCOPE_POLICIES_ENDPOINT
+unset IAM_GROUP_ENDPOINT
+rm -rf ${IAM_CLIENT_RESPONSE_JSON}

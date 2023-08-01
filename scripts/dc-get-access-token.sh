@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+# set -e
 
 source common.sh
 
@@ -15,8 +15,12 @@ fi
 
 IAM_CLIENT_AUDIENCE=${IAM_CLIENT_AUDIENCE}
 
+# Create a temparary file to store response.
 response=$(mktemp)
 
+# -s -> silent
+# -f -> fail silently on server errors.
+# -L -> follow the new location of the requested URI
 curl -s -f -L \
   -u ${IAM_CLIENT_ID}:${IAM_CLIENT_SECRET} \
   -d client_id=${IAM_CLIENT_ID} \
@@ -48,7 +52,7 @@ echo
 echo ${user_code}
 
 echo
-echo "Note that the code above expires in ${expires_in} seconds..."
+echo "Note that the code above expires in $(date -d @${expires_in} +'%Y-%m-%d %H:%M:%S')"
 echo "Once you have correctly authenticated and authorized this device, this script can be restarted to obtain a token. "
 
 
@@ -109,18 +113,21 @@ while true; do
   echo ${scope}
   echo
   echo "which expires in ${expires_in} seconds."
-  echo
-  echo "The following command will set it in the IAM_ACCESS_TOKEN env variable:"
-  echo 
-  echo "export IAM_ACCESS_TOKEN=\"${access_token}\""
+  # echo
+  # echo "The following command will set it in the IAM_ACCESS_TOKEN env variable:"
+  # echo 
+  # echo "export IAM_ACCESS_TOKEN=\"${access_token}\""
+  echo "Please export the below env to extract the response."
+  echo "export IAM_CLIENT_RESPONSE_JSON=\"${response}\""
   echo
 
-  if [[ "${refresh_token}" != "null" ]]; then
-    echo "A refresh token was issued. The following command will set it in the IAM_REFRESH_TOKEN env variable:"
-    echo
-    echo "export IAM_REFRESH_TOKEN=\"${refresh_token}\""
-    echo
-  fi
+  # if [[ "${refresh_token}" != "null" ]]; then
+  #   echo "A refresh token was issued. The following command will set it in the IAM_REFRESH_TOKEN env variable:"
+  #   echo
+  #   echo "export IAM_REFRESH_TOKEN=\"${refresh_token}\""
+  #   echo "export IAM_CLIENT_RESPONSE_JSON=\"${response}\""
+  #   echo
+  # fi
 
   exit 0
 

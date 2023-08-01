@@ -1,3 +1,3 @@
 #!/bin/bash
-
-jwt $(jq -r .access_token /tmp/response)
+source jwt_functions.sh
+jwt ${IAM_ACCESS_TOKEN}

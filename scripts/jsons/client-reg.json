@@ -1,11 +1,18 @@
 {
-  "client_name": "andrea-test-client",
+  "redirect_uris": [
+    "https://localhost/oidc"
+  ],
+  "client_name": "test-ildg-iam",
   "contacts": [
-    "andrea.ceccanti@cnaf.infn.it"
+    "test@iam.test"
   ],
   "token_endpoint_auth_method": "client_secret_basic",
+  "scope": "address phone openid email profile offline_access",
   "grant_types": [
-    "client_credentials",
-    "urn:ietf:params:oauth:grant-type:device_code"
+    "refresh_token",
+    "authorization_code"
+  ],
+  "response_types": [
+    "code"
   ]
 }

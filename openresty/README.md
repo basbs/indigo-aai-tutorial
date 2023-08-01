@@ -47,19 +47,15 @@ the authentication information returned by the OpenID Connect provider.
 ## Checking the resource server integration
 
 A request to the /api context, i.e. http://rp.local.io/api will trigger an
-OAuth token introspection flow. If the token validation is succesfull, NGINX
+OAuth token introspection flow. If the token validation is successful, NGINX
 will display the information returned by the token introspection endpoint.
 
-To test this behaviour, you will first need to get a token (for instance by
-copy pasting what is diplayed in the steps discussed above) and the include it
+To test this behavior, you will first need to get a token (for instance by
+copy pasting what is displayed in the steps discussed above) and the include it
 in an HTTP request to the /api endpoint. Assuming the token is contained in the
 IAM_ACCESS_TOKEN environment variable, the following command will test the
 resource server integration (this command uses [httpie][httpie] command line
 utility):
 
-```console
-
-```
-
-[httpie]: https://github.com/jakubroztocil/httpie
+[httpie](https://github.com/jakubroztocil/httpie)
 
